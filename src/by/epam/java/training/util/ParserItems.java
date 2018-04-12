@@ -6,12 +6,14 @@ import java.util.regex.Pattern;
 
 import by.epam.java.training.entity.Device;
 import by.epam.java.training.entity.Laptop;
+import by.epam.java.training.entity.OperatingSystem;
 import by.epam.java.training.entity.Oven;
 import by.epam.java.training.entity.Property;
 import by.epam.java.training.entity.Refrigerator;
 
-public class ParserItems {
+public class ParserItems implements ParserItemsInterface{
 	
+	@Override
 	public Oven parserOven(String strOven) {
 		Oven oven = new Oven();		
 		List<String> list = parserIntoWords(strOven);
@@ -19,6 +21,7 @@ public class ParserItems {
 			int len = list.size();
 			for (int i = 1; i<len; i++) {
 				Property p = parserProperty(list.get(i));
+				if (p.getName()!=null && p.getValue()!=null)
 				switch (p.getName()) {
 					case "POWER_CONSUMPTION":
 						oven.setPowerConsumption(Integer.parseInt(p.getValue()));
@@ -44,6 +47,7 @@ public class ParserItems {
 		return oven;
 	}
 	
+	@Override
 	public Laptop parserLaptop(String strLaptop) {
 		Laptop laptop = new Laptop();
 		
@@ -56,14 +60,14 @@ public class ParserItems {
 			for (int i = 1; i<len; i++) {
 				
 				Property p = parserProperty(list.get(i));
-				
+				if (p.getName()!=null && p.getValue()!=null)
 				switch (p.getName()) {
 					case "BATTERY_CAPACITY":
 						laptop.setBatteryCapacity(Double.parseDouble(p.getValue()));
 						break;
 						
 					case "OS":
-						laptop.setOS(p.getValue());
+						laptop.setOS(OperatingSystem.getOSbyString(p.getValue()));
 						break;
 						
 					case "MEMORY_ROM":
@@ -87,7 +91,8 @@ public class ParserItems {
 		}
 		return laptop;
 	}
-	
+		
+	@Override
 	public Refrigerator parserRefrigerator(String strRefrigerator) {
 		Refrigerator refrigerator = new Refrigerator();
 		List<String> list = parserIntoWords(strRefrigerator);
@@ -95,6 +100,7 @@ public class ParserItems {
 			int len = list.size();
 			for (int i = 1; i<len; i++) {
 				Property p = parserProperty(list.get(i));
+				if (p.getName()!=null && p.getValue()!=null)
 				switch (p.getName()) {
 					case "POWER_CONSUMPTION":
 						refrigerator.setPowerConsumption(Integer.parseInt(p.getValue()));

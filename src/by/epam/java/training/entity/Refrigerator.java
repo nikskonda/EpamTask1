@@ -2,8 +2,6 @@ package by.epam.java.training.entity;
 
 public class Refrigerator extends Appliance{
 
-	private int powerConsumption;
-
 	private double freezerCapacity;
 
 	private double overallCapacity;
@@ -14,24 +12,12 @@ public class Refrigerator extends Appliance{
 	}
 
 	public Refrigerator(int powerConsumption, double weight, double freezerCapacity, double overallCapacity, double height, double width) {
-		super(Device.Refrigerator, weight, height, width);
-		this.powerConsumption = powerConsumption;
+		super(Device.Refrigerator, powerConsumption, weight, height, width);
 		this.freezerCapacity = freezerCapacity;
 		this.overallCapacity = overallCapacity;
-
 	}
 
-	public int getPowerConsumption() {
-		return this.powerConsumption;
-	}
-
-	public void setPowerConsumption(int powerConsumption) {
-		if (powerConsumption > 0) {
-			this.powerConsumption = powerConsumption;
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
+	
 
 	public double getFreezerCapacity() {
 		return this.freezerCapacity;
@@ -61,7 +47,7 @@ public class Refrigerator extends Appliance{
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.getDeviceType().toString()).append(" :")
-			.append(" POWER_CONSUMPTION=").append(this.powerConsumption)
+			.append(" POWER_CONSUMPTION=").append(super.getPowerConsumption())
 			.append(", WEIGHT=").append(super.getWeight())
 			.append(", FREEZER_CAPACITY=").append(this.freezerCapacity)
 			.append(", OVERALL_CAPACITY=").append(this.overallCapacity)

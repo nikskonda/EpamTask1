@@ -4,7 +4,7 @@ public class Laptop extends Item {
 
 	private double batteryCapacity;
 
-	private String os;
+	private OperatingSystem os;
 
 	private int memoryRom;
 
@@ -18,7 +18,7 @@ public class Laptop extends Item {
 		super(Device.Laptop);
 	}
 
-	public Laptop(double batteryCapacity, String os, int memoryRom, int systemMemory, double cpu, double displayInchs) {
+	public Laptop(double batteryCapacity, OperatingSystem os, int memoryRom, int systemMemory, double cpu, double displayInchs) {
 		super(Device.Laptop);
 		this.batteryCapacity = batteryCapacity;
 		this.os = os;
@@ -40,11 +40,11 @@ public class Laptop extends Item {
 		}
 	}
 
-	public String getOS() {
+	public OperatingSystem getOS() {
 		return this.os;
 	}
 
-	public void setOS(String os) {
+	public void setOS(OperatingSystem os) {
 		if (os != null) {
 			this.os = os;
 		} else {
@@ -105,7 +105,7 @@ public class Laptop extends Item {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.getDeviceType().toString()).append(" :")
 			.append(" BATTERY_CAPACITY=").append(this.batteryCapacity)
-			.append(", OS=").append(this.os)
+			.append(", OS=").append(this.os.toString())
 			.append(", MEMORY_ROM=").append(this.memoryRom)
 			.append(", SYSTEM_MEMORY=").append(this.systemMemory)
 			.append(", CPU=").append(this.cpu)

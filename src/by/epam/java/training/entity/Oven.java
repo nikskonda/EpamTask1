@@ -4,9 +4,6 @@ package by.epam.java.training.entity;
 
 public class Oven extends Appliance {
 
-		
-	private int powerConsumption;
-
 	private double capacity;
 
 	private double depth;
@@ -17,23 +14,10 @@ public class Oven extends Appliance {
 	}
 
 	public Oven(int powerConsumption, double weight, double capacity, double depth, double height, double width) {
-		super(Device.Oven, weight, height, width);
-		this.powerConsumption = powerConsumption;		
+		super(Device.Oven,powerConsumption, weight, height, width);	
 		this.capacity = capacity;
 		this.depth = depth;
 		
-	}
-
-	public int getPowerConsumption() {
-		return this.powerConsumption;
-	}
-
-	public void setPowerConsumption(int powerConsumption) {
-		if (powerConsumption > 0) {
-			this.powerConsumption = powerConsumption;
-		} else {
-			throw new IllegalArgumentException();
-		}
 	}
 
 	public double getCapacity() {
@@ -63,8 +47,8 @@ public class Oven extends Appliance {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString()).append(" :")
-			.append(" POWER_CONSUMPTION=").append(this.powerConsumption)
+		sb.append(super.getDeviceType().toString()).append(" :")
+			.append(" POWER_CONSUMPTION=").append(super.getPowerConsumption())
 			.append(", WEIGHT=").append(super.getWeight())
 			.append(", CAPACITY=").append(this.capacity)
 			.append(", DEPTH=").append(this.depth)

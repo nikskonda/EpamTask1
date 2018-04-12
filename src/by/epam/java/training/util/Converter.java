@@ -5,8 +5,10 @@ import by.epam.java.training.entity.Item;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Converter{
-	public static List<Item> ToItems(List<String> data){
+public class Converter implements ConverterInterface{
+	
+	@Override
+	public List<Item> ToItems(List<String> data){
 		List<Item> list = new ArrayList<Item>();
 		ParserItems pi = new ParserItems();
 		for (String str : data) {
