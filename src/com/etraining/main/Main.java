@@ -9,8 +9,8 @@ public class Main {
     	
         Parameter parameter = new Parameter();
         
-        parameter.addParameter("WIDTH", 70);
-        parameter.addParameter("WEIGHT", 20);   
+        parameter.addParameter("TITLE", "Java");
+        parameter.addParameter("NUMBER_OF_PAGES", 669);   
         
         Printer.println(CustomFileReader.findInDBbyParameter(parameter));
 
