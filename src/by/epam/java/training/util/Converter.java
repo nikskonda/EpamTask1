@@ -1,15 +1,15 @@
 package by.epam.java.training.util;
 
-import by.epam.java.training.entity.Device;
-import by.epam.java.training.entity.Item;
+import by.epam.java.training.entity.Product;
+
 import java.util.List;
 import java.util.ArrayList;
 
 public class Converter implements ConverterInterface{
 	
 	@Override
-	public List<Item> ToItems(List<String> data){
-		List<Item> list = new ArrayList<Item>();
+	public List<Product> ToItems(List<String> data){
+		List<Product> list = new ArrayList<Product>();
 		ParserItems pi = new ParserItems();
 		for (String str : data) {
 			Item item = null;

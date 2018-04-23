@@ -1,18 +1,19 @@
 package by.epam.java.training.entity;
 
-public class Refrigerator extends Appliance{
-
+public class Refrigerator extends KitchenAppliances{
+	
+	public static final String TAG = Refrigerator.class.getSimpleName();
+	
 	private double freezerCapacity;
 
 	private double overallCapacity;
 
-
 	public Refrigerator() {
-		super(Device.Refrigerator);
+		super();
 	}
 
 	public Refrigerator(int powerConsumption, double weight, double freezerCapacity, double overallCapacity, double height, double width) {
-		super(Device.Refrigerator, powerConsumption, weight, height, width);
+		super(powerConsumption, weight, height, width);
 		this.freezerCapacity = freezerCapacity;
 		this.overallCapacity = overallCapacity;
 	}
@@ -42,17 +43,17 @@ public class Refrigerator extends Appliance{
 			throw new IllegalArgumentException();
 		}
 	}
-	
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(this.getDeviceType().toString()).append(" :")
-			.append(" POWER_CONSUMPTION=").append(super.getPowerConsumption())
-			.append(", WEIGHT=").append(super.getWeight())
-			.append(", FREEZER_CAPACITY=").append(this.freezerCapacity)
-			.append(", OVERALL_CAPACITY=").append(this.overallCapacity)
-			.append(", HEIGHT=").append(super.getHeight())
-			.append(", WIDTH=").append(super.getWidth()).append(";");
-		return sb.toString();
-	}
+//	
+//	@Override
+//	public String toString() {
+//		StringBuilder sb = new StringBuilder();
+//		sb.append(this.getDeviceType().toString()).append(" :")
+//			.append(" POWER_CONSUMPTION=").append(super.getPowerConsumption())
+//			.append(", WEIGHT=").append(super.getWeight())
+//			.append(", FREEZER_CAPACITY=").append(this.freezerCapacity)
+//			.append(", OVERALL_CAPACITY=").append(this.overallCapacity)
+//			.append(", HEIGHT=").append(super.getHeight())
+//			.append(", WIDTH=").append(super.getWidth()).append(";");
+//		return sb.toString();
+//	}
 }
