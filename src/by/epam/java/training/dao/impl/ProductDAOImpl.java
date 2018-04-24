@@ -30,7 +30,7 @@ public class ProductDAOImpl implements ProductDAO{
                         }
                     }            
                 } catch (Exception e) {
-                    // log error
+                    System.out.println(e);
                 } finally{
                     return product;
                 }

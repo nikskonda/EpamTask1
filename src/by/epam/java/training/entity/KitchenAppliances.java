@@ -60,8 +60,8 @@ public class KitchenAppliances extends Appliance{
 	}
         
         public String getProprties(){
-            StringBuilder sb = new StringBuilder();           
-			sb.append("WEIGHT=").append(this.weight)
+            StringBuilder sb = new StringBuilder(super.getProprties());           
+			sb.append(" WEIGHT=").append(this.weight)
 			.append(", HEIGHT=").append(this.height)
 			.append(", WIDTH=").append(this.width);
             return sb.toString();

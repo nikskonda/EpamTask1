@@ -10,8 +10,8 @@ import by.epam.java.training.service.ServiceFactory;
 
 public class Controller {
 	public static void main(String[] args) {
-            Criteria criteria = new Criteria(ProductLine.Oven);
-            criteria.add(Oven.CAPACITY, 32);
+            Criteria criteria = new Criteria(ProductLine.Newspaper);
+            criteria.add(Newspaper.PERIODICITY, "1x30");
             
             Product product = ServiceFactory.getInstance().getProductService().find(criteria);
             

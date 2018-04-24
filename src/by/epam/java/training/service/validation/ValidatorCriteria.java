@@ -33,6 +33,11 @@ public class ValidatorCriteria<E> {
 
     private static <E> boolean isValidOven(Criteria<E> criteria) {
         for (Map.Entry<E, Object> entry : criteria.getCriteria().entrySet()) {
+        	
+        	if (!(entry.getKey() instanceof Oven)) {
+        		return false;
+        	}
+        	
             switch ((Oven) entry.getKey()) {
                 case CAPACITY:
                 case DEPTH:
@@ -58,6 +63,11 @@ public class ValidatorCriteria<E> {
 
     private static <E> boolean isValidRefrigerator(Criteria<E> criteria) {
         for (Map.Entry<E, Object> entry : criteria.getCriteria().entrySet()) {
+        	       	
+        	if (!(entry.getKey() instanceof Refrigerator)) {
+        		return false;
+        	}
+        	
             switch ((Refrigerator) entry.getKey()) {
                 case FREEZER_CAPACITY:
                 case OVERALL_CAPACITY:
@@ -82,6 +92,11 @@ public class ValidatorCriteria<E> {
 
     private static <E> boolean isValidVacuumCleaner(Criteria<E> criteria) {
         for (Map.Entry<E, Object> entry : criteria.getCriteria().entrySet()) {
+        	
+        	if (!(entry.getKey() instanceof VacuumCleaner)) {
+        		return false;
+        	}
+        	
             switch ((VacuumCleaner) entry.getKey()) {
                 case BAG_TYPE:
                 case FILTER_TYPE:
@@ -107,6 +122,11 @@ public class ValidatorCriteria<E> {
 
     private static <E> boolean isValidSpeakers(Criteria<E> criteria) {
         for (Map.Entry<E, Object> entry : criteria.getCriteria().entrySet()) {
+        	
+        	if (!(entry.getKey() instanceof Speakers)) {
+        		return false;
+        	}
+        	
             switch ((Speakers) entry.getKey()) {
                 case CORD_LENGTH:
                 case NUMBER_OF_SPEAKERS:
@@ -130,6 +150,11 @@ public class ValidatorCriteria<E> {
 
     private static <E> boolean isValidLaptop(Criteria<E> criteria) {
         for (Map.Entry<E, Object> entry : criteria.getCriteria().entrySet()) {
+        	
+        	if (!(entry.getKey() instanceof Laptop)) {
+        		return false;
+        	}
+        	
             switch ((Laptop) entry.getKey()) {
                 case BATTERY_CAPACITY:
                 case CPU:
@@ -160,6 +185,11 @@ public class ValidatorCriteria<E> {
 
     private static <E> boolean isValidTabletPC(Criteria<E> criteria) {
         for (Map.Entry<E, Object> entry : criteria.getCriteria().entrySet()) {
+
+        	if (!(entry.getKey() instanceof TabletPC)) {
+        		return false;
+        	}
+        	
             switch ((TabletPC) entry.getKey()) {
                 case BATTERY_CAPACITY:
                 case DISPLAY_INCHES:
@@ -189,6 +219,11 @@ public class ValidatorCriteria<E> {
 
     private static <E> boolean isValidNewspaper(Criteria<E> criteria) {
         for (Map.Entry<E, Object> entry : criteria.getCriteria().entrySet()) {
+        	
+        	if (!(entry.getKey() instanceof Newspaper)) {
+        		return false;
+        	}
+        	
             switch ((Newspaper) entry.getKey()) {
                 case TITLE:
                 case PAID_OR_FREE:
@@ -206,6 +241,11 @@ public class ValidatorCriteria<E> {
 
     private static <E> boolean isValidTextBook(Criteria<E> criteria) {
         for (Map.Entry<E, Object> entry : criteria.getCriteria().entrySet()) {
+        	
+        	if (!(entry.getKey() instanceof TextBook)) {
+        		return false;
+        	}
+        	
             switch ((TextBook) entry.getKey()) {
                 case TITLE:
                 case AUTHOR:

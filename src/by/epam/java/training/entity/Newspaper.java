@@ -35,7 +35,7 @@ public class Newspaper extends Literature{
     
     public String getProprties(){
             StringBuilder sb = new StringBuilder(super.getProprties());
-            sb.append("PERIODCITY=").append(this.periodicity)
+            sb.append(", PERIODCITY=").append(this.periodicity)
                     .append(", PAID_OF_FREE=").append(this.paidOfFree);
             return sb.toString();
         }

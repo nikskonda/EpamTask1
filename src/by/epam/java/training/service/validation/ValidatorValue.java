@@ -11,7 +11,7 @@ public class ValidatorValue {
 	}
 	
 	public static boolean isValidDouble(Object obj) {
-		return obj instanceof Double;
+		return isValidInteger(obj) || (obj instanceof Double);
 	}
 	
 	public static boolean isValidInteger(Object obj) {
