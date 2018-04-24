@@ -43,17 +43,19 @@ public class Refrigerator extends KitchenAppliances{
 			throw new IllegalArgumentException();
 		}
 	}
-//	
-//	@Override
-//	public String toString() {
-//		StringBuilder sb = new StringBuilder();
-//		sb.append(this.getDeviceType().toString()).append(" :")
-//			.append(" POWER_CONSUMPTION=").append(super.getPowerConsumption())
-//			.append(", WEIGHT=").append(super.getWeight())
-//			.append(", FREEZER_CAPACITY=").append(this.freezerCapacity)
-//			.append(", OVERALL_CAPACITY=").append(this.overallCapacity)
-//			.append(", HEIGHT=").append(super.getHeight())
-//			.append(", WIDTH=").append(super.getWidth()).append(";");
-//		return sb.toString();
-//	}
+	
+        public String getProprties(){
+            StringBuilder sb = new StringBuilder(super.getProprties());
+            sb.append(", FREEZER_CAPACITY=").append(this.freezerCapacity)
+			.append(", OVERALL_CAPACITY=").append(this.overallCapacity);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
+       
 }

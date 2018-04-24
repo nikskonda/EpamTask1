@@ -43,17 +43,22 @@ public class Oven extends KitchenAppliances {
 			throw new IllegalArgumentException();
 		}
 	}
-//
-//	@Override
-//	public String toString() {
-//		StringBuilder sb = new StringBuilder();
-//		sb.append(super.getDeviceType().toString()).append(" :")
-//			.append(" POWER_CONSUMPTION=").append(super.getPowerConsumption())
-//			.append(", WEIGHT=").append(super.getWeight())
-//			.append(", CAPACITY=").append(this.capacity)
-//			.append(", DEPTH=").append(this.depth)
-//			.append(", HEIGHT=").append(super.getHeight())
-//			.append(", WIDTH=").append(super.getWeight()).append(";");
-//		return sb.toString();
-//	}
+	public static String getTAG() {
+		return Oven.class.getSimpleName();
+	}
+        
+        public String getProprties(){
+            StringBuilder sb = new StringBuilder(super.getProprties());           
+                sb.append(", CAPACITY=").append(this.capacity)
+			.append(", DEPTH=").append(this.depth);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
+
 }

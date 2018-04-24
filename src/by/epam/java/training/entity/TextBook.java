@@ -46,5 +46,18 @@ public class TextBook extends Literature{
         this.numberOfPages = numberOfPages;
     }
 	
-	
+    public String getProprties(){
+            StringBuilder sb = new StringBuilder(super.getProprties());
+            sb.append(", AUTHOR=").append(this.author)
+                    .append(", SUBJECT=").append(this.subject)
+                    .append(", NUMBER_OF_PAGES=").append(this.numberOfPages);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
 }

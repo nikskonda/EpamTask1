@@ -37,5 +37,19 @@ public class TabletPC extends Computers {
     public void setColor(String color) {
         this.color = color;
     }	
+    
+    public String getProprties(){
+            StringBuilder sb = new StringBuilder(super.getProprties());
+            sb.append(", COLOR=").append(this.color)
+			.append(", FLASH_MEMORY_CAPACITY=").append(this.flashMemoryCapacity);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
 	
 }

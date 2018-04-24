@@ -1,5 +1,6 @@
 package by.epam.java.training.dao;
 
+import by.epam.java.training.dao.impl.ProductDAOImpl;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -9,7 +10,7 @@ import by.epam.java.training.service.ServiceFactory;
 
 public class DAOFactory {
 	
-	private static final DAOFactory instance = new DAOFactory();
+	private static DAOFactory instance = new DAOFactory();
 	private static Lock lock = new ReentrantLock();
 
 	private final ProductDAO productDAO = new ProductDAOImpl();

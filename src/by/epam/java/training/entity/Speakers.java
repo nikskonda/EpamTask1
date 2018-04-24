@@ -46,4 +46,19 @@ public class Speakers extends Appliance{
             this.cordLength = cordLength;
         }
     }
+    
+    public String getProprties(){
+            StringBuilder sb = new StringBuilder(super.getProprties());
+            sb.append(", NUMBER_OF_SPEAKERS=").append(this.numberOfSpeakers)
+                .append(", CORD_LENGTH=").append(this.cordLength)
+                .append(", FREQUENCY_RANGE=").append(this.frequencyRange);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
 }

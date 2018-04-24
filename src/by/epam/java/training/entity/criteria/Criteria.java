@@ -1,22 +1,23 @@
 package by.epam.java.training.entity.criteria;
 
+import by.epam.java.training.entity.criteria.SearchCriteria.ProductLine;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Criteria<E> {
 	
-	private String groupSearchName;
+	private ProductLine groupSearchName;
 	private Map<E, Object> criteria = new HashMap<E, Object>();
 	
 	public Criteria() {
         criteria = new HashMap<E, Object>();
     }
 	
-	public Criteria(String groupSearchName) {
+	public Criteria(ProductLine groupSearchName) {
 		this.groupSearchName = groupSearchName;
 	}
 	
-	public Criteria(String groupSearchName, Map<E, Object> criteria) {
+	public Criteria(ProductLine groupSearchName, Map<E, Object> criteria) {
 		this.groupSearchName = groupSearchName;
 		this.criteria = criteria;
 	}
@@ -33,11 +34,11 @@ public class Criteria<E> {
         this.criteria = criteria;
     }
 
-    public String getGroupSearchName() {
+    public ProductLine getGroupSearchName() {
         return groupSearchName;
     }
 
-    public void setGroupSearchName(String groupSearchName) {
+    public void setGroupSearchName(ProductLine groupSearchName) {
         this.groupSearchName = groupSearchName;
     }
 	

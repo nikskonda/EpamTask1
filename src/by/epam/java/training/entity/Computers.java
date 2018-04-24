@@ -58,4 +58,20 @@ public class Computers extends Product{
 			throw new IllegalArgumentException();
 		}
 	}
+        
+        public String getProprties(){
+            StringBuilder sb = new StringBuilder();
+            sb.append("BATTERY_CAPACITY=").append(this.batteryCapacity)
+			.append(", MEMORY_ROM=").append(this.memoryRom)
+			.append(", DISPLAY_INCHES=").append(this.displayInches)
+                    ;
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
 }

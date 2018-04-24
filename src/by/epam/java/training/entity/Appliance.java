@@ -25,16 +25,18 @@ public class Appliance extends Product{
 		} else {
 			throw new IllegalArgumentException();
 		}
+	}	
+        
+        public String getProprties(){
+            StringBuilder sb = new StringBuilder();
+            sb.append("POWER_CONSUMPTION=").append(this.powerConsumption);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();
 	}
-//	
-//	@Override
-//	public String toString() {
-//		StringBuilder sb = new StringBuilder();
-//		sb.append(this.getDeviceType().toString()).append(" :")
-//			.append(" POWER_CONSUMPTION=").append(this.powerConsumption)
-//			.append(", WEIGHT=").append(this.weight)
-//			.append(", HEIGHT=").append(this.height)
-//			.append(", WIDTH=").append(this.width).append(";");
-//		return sb.toString();
-//	}
 }

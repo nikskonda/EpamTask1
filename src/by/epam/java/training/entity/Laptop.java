@@ -58,18 +58,18 @@ public class Laptop extends Computers {
 		}
 	}
 
-	
-//
-//	@Override
-//	public String toString() {
-//		StringBuilder sb = new StringBuilder();
-//		sb.append(this.getDeviceType().toString()).append(" :")
-//			.append(" BATTERY_CAPACITY=").append(this.batteryCapacity)
-//			.append(", OS=").append(this.os.toString())
-//			.append(", MEMORY_ROM=").append(this.memoryRom)
-//			.append(", SYSTEM_MEMORY=").append(this.systemMemory)
-//			.append(", CPU=").append(this.cpu)
-//			.append(", DISPLAY_INCHS=").append(this.displayInchs).append(";");
-//		return sb.toString();
-//	}
+	public String getProprties(){
+            StringBuilder sb = new StringBuilder(super.getProprties());
+            sb.append(", OS=").append(this.os.toString())
+			.append(", SYSTEM_MEMORY=").append(this.systemMemory)
+			.append(", CPU=").append(this.cpu);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
 }

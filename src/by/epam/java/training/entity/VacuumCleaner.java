@@ -70,4 +70,21 @@ public class VacuumCleaner extends Appliance{
             this.cleaningWidth = cleaningWidth;
         }
     }
+    
+    public String getProprties(){
+            StringBuilder sb = new StringBuilder(super.getProprties());
+            sb.append(", BAG_TYPE=").append(this.bagType)
+		.append(", CLEANING_WIDTH=").append(this.cleaningWidth)
+                .append(", FILTER_TYPE=").append(this.filterType)
+                .append(", MOTOR_SPEED_REGULATION=").append(this.motorSpeedRegulation)
+                .append(", WAND_TYPE=").append(this.wandType);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
 }

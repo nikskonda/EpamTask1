@@ -21,4 +21,17 @@ public class Literature extends Product{
 	public void setTitle(String title) {
 		this.title = title;
 	}
+        
+        public String getProprties(){
+            StringBuilder sb = new StringBuilder();
+            sb.append("TITLE=").append(this.title);			
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
 }

@@ -32,4 +32,18 @@ public class Newspaper extends Literature{
     public void setPaidOfFree(String paidOfFree) {
         this.paidOfFree = paidOfFree;
     }
+    
+    public String getProprties(){
+            StringBuilder sb = new StringBuilder(super.getProprties());
+            sb.append("PERIODCITY=").append(this.periodicity)
+                    .append(", PAID_OF_FREE=").append(this.paidOfFree);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
 }

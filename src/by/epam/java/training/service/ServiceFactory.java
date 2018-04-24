@@ -1,6 +1,7 @@
 package by.epam.java.training.service;
 
 import by.epam.java.training.entity.Product;
+import by.epam.java.training.service.impl.ProductServiceImpl;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -13,7 +14,7 @@ public final class ServiceFactory {
 	
 	private ServiceFactory() {}
 
-	public ProductService getApplianceService() {
+	public ProductService getProductService() {
 		return productService;
 	}
 	

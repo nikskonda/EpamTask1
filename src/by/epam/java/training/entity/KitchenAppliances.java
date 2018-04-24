@@ -58,5 +58,20 @@ public class KitchenAppliances extends Appliance{
 			throw new IllegalArgumentException();
 		}
 	}
+        
+        public String getProprties(){
+            StringBuilder sb = new StringBuilder();           
+			sb.append("WEIGHT=").append(this.weight)
+			.append(", HEIGHT=").append(this.height)
+			.append(", WIDTH=").append(this.width);
+            return sb.toString();
+        }
+        
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();               
+	}
 	
 }
