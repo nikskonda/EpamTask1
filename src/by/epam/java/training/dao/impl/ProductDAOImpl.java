@@ -1,7 +1,7 @@
 package by.epam.java.training.dao.impl;
 
 import by.epam.java.training.dao.ProductDAO;
-import by.epam.java.training.dao.constructor.ProductConstructor;
+import by.epam.java.training.dao.constructor.CounstuctorFactory;
 import by.epam.java.training.dao.constructor.impl.ProductConstructorImpl;
 import by.epam.java.training.dao.impl.util.ProductParser;
 import by.epam.java.training.entity.Product;
@@ -25,8 +25,9 @@ public class ProductDAOImpl implements ProductDAO{
                     String line;
                     while ((line = reader.readLine()) != null) {
                         if (isContainsCriterias(criteria, line)){
-                            ProductConstructor pc = new ProductConstructorImpl();
-                            product = pc.createProduct(productParser.parseToCriteria(line));
+                            product =  CounstuctorFactory.getInstance()
+                            		.getProductConstructor().createProduct(
+                            				productParser.parseToCriteria(line));
                         }
                     }            
                 } catch (Exception e) {
