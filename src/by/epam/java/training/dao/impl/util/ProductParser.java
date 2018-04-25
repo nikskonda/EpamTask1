@@ -5,7 +5,6 @@
  */
 package by.epam.java.training.dao.impl.util;
 
-import by.epam.java.training.entity.Product;
 import by.epam.java.training.entity.criteria.Criteria;
 import by.epam.java.training.entity.criteria.SearchCriteria.*;
 import java.util.ArrayList;
@@ -21,9 +20,9 @@ import java.util.regex.Pattern;
  */
 public class ProductParser {
     
-        private final String parserWords =":|\\s:|:\\s|\\s:\\s|,\\s|\\s|;|,";
-        private final String parserProductName = "^[A-Za-z]+";
-        private final String parserProductProperty = "=";
+        private final String PARSER_WORDS =":|\\s:|:\\s|\\s:\\s|,\\s|\\s|;|,";
+        private final String PARSER_PRODUCT_NAME = "^[A-Za-z]+";
+        private final String PARSER_PRODUCT_PROPERTY = "=";
         
         public String getPropertyAndValue(String property, String value){
             StringBuilder sb = new StringBuilder();
@@ -78,7 +77,7 @@ public class ProductParser {
         }
                      
         private String parserProductName(String str){
-            Pattern p = Pattern.compile(parserProductName);
+            Pattern p = Pattern.compile(PARSER_PRODUCT_NAME);
             Matcher m = p.matcher(str);
             if (m.find()){
                 return m.group();
@@ -89,10 +88,10 @@ public class ProductParser {
    
     
 	private List<String> parserIntoProperties(String str) {
-            Pattern pattern = Pattern.compile(parserWords);
+            Pattern pattern = Pattern.compile(PARSER_WORDS);
             List<String> result = new ArrayList<String>();
             for (String s : pattern.split(str)){
-                if (s.contains(parserProductProperty)){
+                if (s.contains(PARSER_PRODUCT_PROPERTY)){
                    result.add(s);
                 }
             }
@@ -102,7 +101,7 @@ public class ProductParser {
         private Map<String, String> parsetValues(List<String> properties){
             Map<String, String> result = new HashMap<String, String>();
             
-            Pattern pattern = Pattern.compile(parserProductProperty); 
+            Pattern pattern = Pattern.compile(PARSER_PRODUCT_PROPERTY); 
             for (String str : properties){
                 String[] value = pattern.split(str);
                 if (value.length==2){

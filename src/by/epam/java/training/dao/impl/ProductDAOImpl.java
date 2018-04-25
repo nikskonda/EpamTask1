@@ -14,14 +14,14 @@ import java.util.Map;
 
 public class ProductDAOImpl implements ProductDAO{
 	
-	private final String fileName = "appliances_db.txt";
+	private final String FILE_NAME = "resources/appliances_db.txt";
 	
         private ProductParser productParser = new ProductParser();
         
 	@Override
 	public <E> Product find(Criteria<E> criteria) {		
                 Product product = null;
-		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))){
+		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))){
                     String line;
                     while ((line = reader.readLine()) != null) {
                         if (isContainsCriterias(criteria, line)){

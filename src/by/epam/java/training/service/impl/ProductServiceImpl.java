@@ -11,8 +11,8 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public <E> Product find(Criteria<E> criteria) {
-		
-		if (!ValidatorCriteria.isValidCriteria(criteria) ) {
+		ValidatorCriteria validator = new ValidatorCriteria();
+		if (!validator.isValidCriteria(criteria) ) {                        
 			return null;
 		}
                 
