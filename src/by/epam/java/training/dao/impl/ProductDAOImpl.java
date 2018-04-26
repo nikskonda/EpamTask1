@@ -3,7 +3,6 @@ package by.epam.java.training.dao.impl;
 import by.epam.java.training.dao.ProductDAO;
 import by.epam.java.training.dao.constructor.CounstuctorFactory;
 import by.epam.java.training.dao.constructor.impl.ProductConstructorImpl;
-import by.epam.java.training.dao.impl.util.ProductParser;
 import by.epam.java.training.entity.Product;
 import by.epam.java.training.entity.criteria.Criteria;
 import java.io.BufferedReader;
@@ -16,7 +15,7 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	private final String FILE_NAME = "resources/appliances_db.txt";
 	
-        private ProductParser productParser = new ProductParser();
+        private ParserManager productParser = new ParserManager();
         
 	@Override
 	public <E> Product find(Criteria<E> criteria) {		
