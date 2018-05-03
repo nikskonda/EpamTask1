@@ -7,10 +7,16 @@ import by.epam.java.training.entity.criteria.Criteria;
 import by.epam.java.training.service.ProductService;
 import by.epam.java.training.service.validation.ValidatorCriteria;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductServiceImpl implements ProductService{
 
 	@Override
-	public <E> Product find(Criteria<E> criteria) {
+	public <E> List<Product> find(Criteria<E> criteria) {
+
+		List<Product> list = new ArrayList<>();
+
 		ValidatorCriteria validator = new ValidatorCriteria();
 		if (!validator.isValidCriteria(criteria) ) {                        
 			return null;
@@ -19,9 +25,9 @@ public class ProductServiceImpl implements ProductService{
 		DAOFactory factory = DAOFactory.getInstance();
 		ProductDAO productDAO = factory.getProductDAO();
 		
-		Product product= productDAO.find(criteria);
+		list = productDAO.find(criteria);
 					
-		return product;
+		return list;
 
 	}
 	

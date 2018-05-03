@@ -2,6 +2,7 @@ package by.epam.java.training.dao.impl;
 
 import by.epam.java.training.dao.ProductDAO;
 import by.epam.java.training.dao.constructor.CounstuctorFactory;
+import by.epam.java.training.dao.constructor.ProductConstructor;
 import by.epam.java.training.dao.constructor.impl.ProductConstructorImpl;
 import by.epam.java.training.entity.Product;
 import by.epam.java.training.entity.criteria.Criteria;
@@ -18,22 +19,21 @@ public class ProductDAOImpl implements ProductDAO{
         private ParserManager productParser = new ParserManager();
         
 	@Override
-	public <E> Product find(Criteria<E> criteria) {		
-                Product product = null;
+	public <E> List<Product> find(Criteria<E> criteria) {
+	    List<Product> list = new ArrayList<>();
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))){
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        if (isContainsCriterias(criteria, line)){
-                            product =  CounstuctorFactory.getInstance()
-                            		.getProductConstructor().createProduct(
-                            				productParser.parseToCriteria(line));
-                        }
-                    }            
-                } catch (Exception e) {
-                    System.out.println(e);
-                } finally{
-                    return product;
-                }
+		    String line;
+            ProductConstructor constr = CounstuctorFactory.getInstance().getProductConstructor();
+            while ((line = reader.readLine()) != null) {
+                if (isContainsCriterias(criteria, line)){
+                    list.add(constr.createProduct(productParser.parseToCriteria(line)));
+                    }
+            }
+		} catch (Exception e) {
+		    System.out.println(e);
+		} finally{
+		    return list;
+		}
                     
 		
 	}  

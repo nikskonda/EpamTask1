@@ -1,6 +1,6 @@
 package by.epam.java.training.entity;
 
-public class Appliance extends Product{
+public class Appliance implements Product{
 	
 	public static final String TAG = Appliance.class.getSimpleName();
 	

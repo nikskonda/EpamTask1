@@ -1,6 +1,6 @@
 package by.epam.java.training.entity;
 
-public class Computers extends Product{
+public class Computers implements Product{
 	
 	public static final String TAG = Computers.class.getSimpleName();
 	
