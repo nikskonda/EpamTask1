@@ -1,7 +1,10 @@
 package by.epam.java.training.entity;
 
-public class VacuumCleaner extends Appliance{
+import java.io.Serializable;
 
+public class VacuumCleaner extends Appliance implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 	public static final String TAG = VacuumCleaner.class.getSimpleName();
 	
     private String filterType;
@@ -82,9 +85,47 @@ public class VacuumCleaner extends Appliance{
         }
         
 	@Override
-	public String toString() {
+	public String asString() {
 		StringBuilder sb = new StringBuilder(TAG);
 		sb.append(": ").append(getProprties()).append(";");
 		return sb.toString();               
 	}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        VacuumCleaner vc = (VacuumCleaner) o;
+
+        if (motorSpeedRegulation != vc.motorSpeedRegulation) return false;
+        if (cleaningWidth != vc.cleaningWidth) return false;
+
+        if (this.bagType != null) {
+            if (!this.bagType.equals(vc.bagType)) return false; }
+        else if (vc.bagType == null) return false;
+
+        if (this.wandType != null) {
+            if (!this.wandType.equals(vc.wandType)) return false; }
+        else if (vc.wandType == null) return false;
+
+        if (this.filterType != null) {
+            if (!this.filterType.equals(vc.filterType)) return false; }
+        else if (vc.filterType == null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int hashCode = super.hashCode();
+        hashCode = prime * hashCode + (filterType != null ? filterType.hashCode() : 0);
+        hashCode = prime * hashCode + (bagType != null ? bagType.hashCode() : 0);
+        hashCode = prime * hashCode + (wandType != null ? wandType.hashCode() : 0);
+        hashCode = prime * hashCode + motorSpeedRegulation;
+        hashCode = prime * hashCode + cleaningWidth;
+        return hashCode;
+    }
 }

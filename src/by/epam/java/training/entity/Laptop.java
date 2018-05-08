@@ -1,7 +1,10 @@
 package by.epam.java.training.entity;
 
-public class Laptop extends Computers {
-	
+import java.io.Serializable;
+
+public class Laptop extends Computers implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public static final String TAG = Laptop.class.getSimpleName();
 	
 	private String os;
@@ -64,12 +67,42 @@ public class Laptop extends Computers {
 			.append(", SYSTEM_MEMORY=").append(this.systemMemory)
 			.append(", CPU=").append(this.cpu);
             return sb.toString();
-        }
-        
+	}
+
 	@Override
-	public String toString() {
+    public String asString(){
 		StringBuilder sb = new StringBuilder(TAG);
 		sb.append(": ").append(getProprties()).append(";");
-		return sb.toString();               
+		return sb.toString();
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		if (!super.equals(obj)) return false;
+
+		Laptop laptop = (Laptop) obj;
+
+		if (systemMemory != laptop.systemMemory) return false;
+		if (Double.compare(laptop.cpu, cpu) != 0) return false;
+        if (this.os != null) {
+            if (!this.os.equals(laptop.os)) return false; }
+        else if (laptop.os == null) return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int hashCode = super.hashCode();
+		hashCode = prime * hashCode + (os != null ? os.hashCode() : 0);
+		hashCode = prime * hashCode + systemMemory;
+		hashCode = prime * hashCode + Double.hashCode(this.cpu);
+		return hashCode;
+	}
+
+
+
 }

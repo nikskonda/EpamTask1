@@ -1,7 +1,10 @@
 package by.epam.java.training.entity;
 
-public class Refrigerator extends KitchenAppliances{
-	
+import java.io.Serializable;
+
+public class Refrigerator extends KitchenAppliances implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public static final String TAG = Refrigerator.class.getSimpleName();
 	
 	private double freezerCapacity;
@@ -52,10 +55,32 @@ public class Refrigerator extends KitchenAppliances{
         }
         
 	@Override
-	public String toString() {
+	public String asString() {
 		StringBuilder sb = new StringBuilder(TAG);
 		sb.append(": ").append(getProprties()).append(";");
 		return sb.toString();               
 	}
-       
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null) return false;
+		if (getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+
+		Refrigerator ref = (Refrigerator) o;
+
+		if (Double.compare(ref.freezerCapacity, freezerCapacity) != 0) return false;
+		if (Double.compare(ref.overallCapacity, overallCapacity) != 0) return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int hashCode = super.hashCode();
+		hashCode = prime * hashCode + Double.hashCode(this.freezerCapacity);
+		hashCode = prime * hashCode + Double.hashCode(this.overallCapacity);
+		return hashCode;
+	}
 }

@@ -14,15 +14,7 @@ import by.epam.java.training.dao.constructor.impl.util.SpeakersConstructor;
 import by.epam.java.training.dao.constructor.impl.util.TabletPCConstructor;
 import by.epam.java.training.dao.constructor.impl.util.TextBookConstructor;
 import by.epam.java.training.dao.constructor.impl.util.VacuumCleanerConstructor;
-import by.epam.java.training.entity.Laptop;
-import by.epam.java.training.entity.Newspaper;
-import by.epam.java.training.entity.Oven;
 import by.epam.java.training.entity.Product;
-import by.epam.java.training.entity.Refrigerator;
-import by.epam.java.training.entity.Speakers;
-import by.epam.java.training.entity.TabletPC;
-import by.epam.java.training.entity.TextBook;
-import by.epam.java.training.entity.VacuumCleaner;
 import by.epam.java.training.entity.criteria.Criteria;
 import by.epam.java.training.entity.criteria.SearchCriteria.*;
 import java.util.HashMap;
@@ -49,7 +41,7 @@ public class ProductConstructorImpl implements ProductConstructor{
     
     @Override
     public <E> Product createProduct(Criteria<E> criteria) {
-        Constructor constructor = constructors.get(criteria.getGroupSearchName());           
+        Constructor constructor = constructors.get(criteria.getProductLine());
         return constructor.execute(criteria.getCriteria());           
     }     
 }

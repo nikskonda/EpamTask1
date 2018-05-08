@@ -1,7 +1,10 @@
 package by.epam.java.training.entity;
 
-public class Speakers extends Appliance{
-	
+import java.io.Serializable;
+
+public class Speakers extends Appliance implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 	public static final String TAG = Speakers.class.getSimpleName();
 	
 	private int numberOfSpeakers;
@@ -56,9 +59,37 @@ public class Speakers extends Appliance{
         }
         
 	@Override
-	public String toString() {
+	public String asString() {
 		StringBuilder sb = new StringBuilder(TAG);
 		sb.append(": ").append(getProprties()).append(";");
 		return sb.toString();               
 	}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Speakers speakers = (Speakers) o;
+
+        if (numberOfSpeakers != speakers.numberOfSpeakers) return false;
+        if (cordLength != speakers.cordLength) return false;
+
+        if (this.frequencyRange != null) {
+            if (!this.frequencyRange.equals(speakers.frequencyRange)) return false; }
+        else if (speakers.frequencyRange == null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int hashCode = super.hashCode();
+        hashCode = prime * hashCode + this.numberOfSpeakers;
+        hashCode = prime * hashCode + (this.frequencyRange != null ? frequencyRange.hashCode() : 0);
+        hashCode = prime * hashCode + this.cordLength;
+        return hashCode;
+    }
 }

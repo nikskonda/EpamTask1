@@ -1,17 +1,17 @@
 package by.epam.java.training.entity;
 
-public class KitchenAppliances extends Appliance{
-	
+import java.io.Serializable;
+
+public class KitchenAppliances extends Appliance implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public static final String TAG = KitchenAppliances.class.getSimpleName();
 
 	
 	private double weight;
-
 	private double height;
-
 	private double width;
-	
-	
+
 	public KitchenAppliances() {
 		super();
 	}
@@ -66,12 +66,35 @@ public class KitchenAppliances extends Appliance{
 			.append(", WIDTH=").append(this.width);
             return sb.toString();
         }
-        
+
+        public String asString(){
+			StringBuilder sb = new StringBuilder(TAG);
+			sb.append(": ").append(getProprties()).append(";");
+			return sb.toString();
+		}
+
 	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder(TAG);
-		sb.append(": ").append(getProprties()).append(";");
-		return sb.toString();               
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		if (!super.equals(obj)) return false;
+
+		KitchenAppliances kitchenAppliances = (KitchenAppliances) obj;
+
+		if (Double.compare(kitchenAppliances.weight, weight) != 0) return false;
+		if (Double.compare(kitchenAppliances.height, height) != 0) return false;
+		if (Double.compare(kitchenAppliances.width, width) != 0) return false;
+		return true;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int hashCode = super.hashCode();
+		hashCode = hashCode * prime + Double.hashCode(this.height);
+		hashCode = hashCode * prime + Double.hashCode(this.weight);
+		hashCode = hashCode * prime + Double.hashCode(this.width);
+		return hashCode;
+	}
 }

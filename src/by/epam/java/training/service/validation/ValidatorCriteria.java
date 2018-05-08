@@ -30,7 +30,7 @@ public class ValidatorCriteria<E> {
     
     
     public <E> boolean isValidCriteria(Criteria<E> criteria) {                    
-        return validators.get(criteria.getGroupSearchName()).isValid(criteria);
+        return validators.get(criteria.getProductLine()).isValid(criteria);
     }
     
 }

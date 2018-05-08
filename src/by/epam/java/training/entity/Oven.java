@@ -1,7 +1,10 @@
 package by.epam.java.training.entity;
 
-public class Oven extends KitchenAppliances {
+import java.io.Serializable;
 
+public class Oven extends KitchenAppliances implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 	public static final String TAG = Oven.class.getSimpleName();
 	
 	private double capacity;
@@ -47,18 +50,38 @@ public class Oven extends KitchenAppliances {
 		return Oven.class.getSimpleName();
 	}
         
-        public String getProprties(){
+	public String getProprties(){
             StringBuilder sb = new StringBuilder(super.getProprties());           
                 sb.append(", CAPACITY=").append(this.capacity)
 			.append(", DEPTH=").append(this.depth);
             return sb.toString();
-        }
-        
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder(TAG);
-		sb.append(": ").append(getProprties()).append(";");
-		return sb.toString();               
 	}
 
+	@Override
+	public String asString() {
+		StringBuilder sb = new StringBuilder(TAG);
+		sb.append(": ").append(getProprties()).append(";");
+		return sb.toString();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null) return false;
+		if (getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+		Oven oven = (Oven) o;
+		if (Double.compare(oven.capacity, capacity) != 0) return false;
+		if (Double.compare(oven.depth, depth) != 0) return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int hashCode = super.hashCode();
+		hashCode = prime * hashCode + Double.hashCode(this.capacity);
+		hashCode = prime * hashCode + Double.hashCode(this.depth);
+		return hashCode;
+	}
 }

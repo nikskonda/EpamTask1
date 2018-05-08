@@ -62,7 +62,7 @@ public class ParserManager {
             
             for (ProductLine prod : ProductLine.values()){
                 if (prod.toString().equals(productName)){
-                    criteria.setGroupSearchName(prod);
+                    criteria.setProductLine(prod);
                     break;
                 }
             }   
@@ -71,7 +71,7 @@ public class ParserManager {
 	}
         
         private void setCriterias(Criteria criteria, String str){               
-            this.parsers.get(criteria.getGroupSearchName())
+            this.parsers.get(criteria.getProductLine())
                     .execute(parsetValues(parserIntoProperties(str)), criteria);               
         }
                      

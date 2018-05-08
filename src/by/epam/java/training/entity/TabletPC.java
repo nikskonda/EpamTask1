@@ -1,7 +1,10 @@
 package by.epam.java.training.entity;
 
-public class TabletPC extends Computers {
+import java.io.Serializable;
 
+public class TabletPC extends Computers implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 	public static final String TAG = TabletPC.class.getSimpleName();
 	
 	private String color;
@@ -46,10 +49,35 @@ public class TabletPC extends Computers {
         }
         
 	@Override
-	public String toString() {
+	public String asString() {
 		StringBuilder sb = new StringBuilder(TAG);
 		sb.append(": ").append(getProprties()).append(";");
 		return sb.toString();               
 	}
-	
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        if (!super.equals(obj)) return false;
+
+        TabletPC tabletPC = (TabletPC) obj;
+
+        if (flashMemoryCapacity != tabletPC.flashMemoryCapacity) return false;
+
+        if (this.color != null) {
+            if (!this.color.equals(tabletPC.color)) return false; }
+        else if (tabletPC.color == null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+	    final int prime = 31;
+        int hashCode = super.hashCode();
+        hashCode = prime * hashCode + (color != null ? color.hashCode() : 0);
+        hashCode = prime * hashCode + flashMemoryCapacity;
+        return hashCode;
+    }
 }
